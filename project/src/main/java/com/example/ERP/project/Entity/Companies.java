@@ -21,6 +21,8 @@ public class Companies {
 	private String webSite;
 	@NotBlank(message="email is Required")
 	private String email;
+	@NotBlank(message="GST Number is Required")
+	private String gstNumber;
 	@NotBlank(message="phone is Required")
 	private String phone;
 	@NotBlank(message="address is Required")
@@ -36,7 +38,7 @@ public class Companies {
 	public Companies() {
 		super();
 	}
-	public Companies(long id, String company_name, String industry, String webSite, String email, String phone,
+	public Companies(long id, String company_name, String industry, String webSite, String email,String gstNumber, String phone,
 			String address, String city, String state, String country, Timestamp createdAt, Timestamp updatedAt) {
 		super();
 		this.id = id;
@@ -44,6 +46,7 @@ public class Companies {
 		this.industry = industry;
 		this.webSite = webSite;
 		this.email = email;
+		this.gstNumber = gstNumber;
 		this.phone = phone;
 		this.address = address;
 		this.city = city;
@@ -81,6 +84,12 @@ public class Companies {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	public String getGstNumber() {
+		return gstNumber;
+	}
+	public void setGstNumber(String gstNumber) {
+		this.gstNumber = gstNumber;
 	}
 	public String getPhone() {
 		return phone;
