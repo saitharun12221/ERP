@@ -19,10 +19,10 @@ public class Cash {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "ledgers_id")
+	@JoinColumn(name = "ledgers_id",columnDefinition = "BIGINT")
 	private Ledger ledger;
-	private String name;
-	private String code;
+	private String cash_account_name;
+	private String cash_account_code;
 	private BigDecimal openingBalance;
 	private BigDecimal closingBalance;
 	private String currency;
@@ -30,10 +30,10 @@ public class Cash {
 	private Timestamp updatedAt;
 	public Cash() {
 	}
-	public Cash(Ledger ledger, String name, String code, BigDecimal openingBalance, BigDecimal closingBalance, String currency, Timestamp createdAt, Timestamp updatedAt) {
+	public Cash(Ledger ledger, String cash_account_name, String cash_account_code, BigDecimal openingBalance, BigDecimal closingBalance, String currency, Timestamp createdAt, Timestamp updatedAt) {
 		this.ledger = ledger;
-		this.name = name;
-		this.code = code;
+		this.cash_account_name = cash_account_name;
+		this.cash_account_code = cash_account_code;
 		this.openingBalance = openingBalance;
 		this.closingBalance = closingBalance;
 		this.currency = currency;
@@ -53,16 +53,16 @@ public class Cash {
 		this.ledger = ledger;
 	}
 	public String getName() {
-		return name;
+		return cash_account_name;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setName(String cash_account_name) {
+		this.cash_account_name = cash_account_name;
 	}
 	public String getCode() {
-		return code;
+		return cash_account_code;
 	}
-	public void setCode(String code) {
-		this.code = code;
+	public void setCode(String cash_account_code) {
+		this.cash_account_code = cash_account_code;
 	}
 	public BigDecimal getOpeningBalance() {
 		return openingBalance;

@@ -6,6 +6,7 @@ import java.sql.Timestamp;
 import com.example.ERP.project.Enum.Ledger_category_enum;
 import com.example.ERP.project.Enum.Ledger_enum;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -20,11 +21,12 @@ import jakarta.persistence.Table;
 public class Ledger {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	@Column(name = "id", columnDefinition = "BIGINT")
+	private Long id;
 	private String ledger_name;
 	private String ledger_code;
 	private Ledger_enum ledger_enum;
-	private Ledger_category_enum ledger_category_enum;
+	private Ledger_category_enum ledger_category;
 	private BigDecimal opening_balance;
 	private BigDecimal closing_balance;
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -35,24 +37,24 @@ public class Ledger {
 	public Ledger() {
 		super();
 	}
-	public Ledger(long id, String ledger_name, String ledger_code, Ledger_enum ledger_enum, Ledger_category_enum ledger_category_enum,
+	public Ledger(Long id, String ledger_name, String ledger_code, Ledger_enum ledger_enum, Ledger_category_enum ledger_category,
 			BigDecimal opening_balance, BigDecimal closing_balance, Companies company,Timestamp createdAt, Timestamp updatedAt) {
 		super();
 		this.id = id;
 		this.ledger_name = ledger_name;
 		this.ledger_code = ledger_code;
 		this.ledger_enum = ledger_enum;
-		this.ledger_category_enum = ledger_category_enum;
+		this.ledger_category = ledger_category;
 		this.opening_balance = opening_balance;
 		this.closing_balance = closing_balance;
 		this.company = company;
 		this.createdAt = createdAt;
 		this.updatedAt = updatedAt;
 	}
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getLedger_name() {
@@ -74,10 +76,10 @@ public class Ledger {
 		this.ledger_enum = ledger_enum;
 	}
 	public Ledger_category_enum getLedger_category_enum() {
-		return ledger_category_enum;
+		return ledger_category;
 	}
-	public void setLedger_category_enum(Ledger_category_enum ledger_category_enum) {
-		this.ledger_category_enum = ledger_category_enum;
+	public void setLedger_category_enum(Ledger_category_enum ledger_category) {
+		this.ledger_category = ledger_category;
 	}
 	public BigDecimal getOpening_balance() {
 		return opening_balance;

@@ -19,6 +19,9 @@ public class IncomeService {
 	public Income getIncomeById(Long id) {
 		return incomeRepository.findById(id).orElse(null);
 	}
+	public Income getIncomeByLedgerId(Long ledgerId) {
+	    return incomeRepository.findByLedgerId(ledgerId).orElse(null);
+	}
 	public Income createIncome(Income income) {
 		return incomeRepository.save(income);
 	}
@@ -26,7 +29,6 @@ public class IncomeService {
 		Income existingIncome = incomeRepository.findById(id).orElse(null);
 		if (existingIncome != null) {
 			existingIncome.setLedger(income.getLedger());
-			existingIncome.setName(income.getName());
 			existingIncome.setCode(income.getCode());
 			existingIncome.setCategory(income.getCategory());
 			existingIncome.setSubCategory(income.getSubCategory());

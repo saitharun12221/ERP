@@ -19,6 +19,9 @@ public class CashService {
 	public Cash getCashById(Long id) {
 		return cashRepository.findById(id).orElse(null);
 	}
+	public Cash getCashByLedgerId(Long ledgerId) {
+	    return cashRepository.findByLedgerId(ledgerId).orElse(null);
+	}
 	public Cash createCash(Cash cash) {
 		return cashRepository.save(cash);
 	}

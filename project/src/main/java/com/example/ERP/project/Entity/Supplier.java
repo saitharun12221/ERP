@@ -1,5 +1,7 @@
 package com.example.ERP.project.Entity;
 
+import java.sql.Timestamp;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -16,7 +18,7 @@ public class Supplier {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "ledgers_id")
+	@JoinColumn(name = "ledgers_id",columnDefinition = "BIGINT")
 	private Ledger ledger;
 	private String supplier_code;
 	private String supplier_name;
@@ -26,6 +28,8 @@ public class Supplier {
 	private String address;
 	private int credit_period;
 	private String pan_number;
+	private Timestamp createdAt;
+	private Timestamp updatedAt;
 	public Supplier() {
 		super();
 	}
@@ -103,5 +107,16 @@ public class Supplier {
 	public void setPan_number(String pan_number) {
 		this.pan_number = pan_number;
 	}
-	
+	public Timestamp getCreatedAt() {
+		return createdAt;
+	}
+	public void setCreatedAt(Timestamp createdAt) {
+		this.createdAt = createdAt;
+	}
+	public Timestamp getUpdatedAt() {
+		return updatedAt;
+	}
+	public void setUpdatedAt(Timestamp updatedAt) {
+		this.updatedAt = updatedAt;
+	}
 }

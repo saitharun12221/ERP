@@ -13,8 +13,8 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "income_ledger")
-public class Income {
+@Table(name = "expense_ledger")
+public class Expenses {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -25,18 +25,22 @@ public class Income {
 	private String category;
 	private String subCategory;
 	private boolean isTaxable;
-	private BigDecimal TaxRate;
+	private BigDecimal taxRate;
 	private Timestamp createdAt;
 	private Timestamp updatedAt;
-	public Income() {
+	public Expenses() {
+		super();
 	}
-	public Income(Ledger ledger, String code, String category, String subCategory, boolean isTaxable, BigDecimal TaxRate, Timestamp createdAt, Timestamp updatedAt) {
+	public Expenses(Long id, Ledger ledger, String code, String category, String subCategory, boolean isTaxable,
+			BigDecimal taxRate, Timestamp createdAt, Timestamp updatedAt) {
+		super();
+		this.id = id;
 		this.ledger = ledger;
 		this.code = code;
 		this.category = category;
 		this.subCategory = subCategory;
 		this.isTaxable = isTaxable;
-		this.TaxRate = TaxRate;
+		this.taxRate = taxRate;
 		this.createdAt = createdAt;
 		this.updatedAt = updatedAt;
 	}
@@ -77,10 +81,10 @@ public class Income {
 		this.isTaxable = isTaxable;
 	}
 	public BigDecimal getTaxRate() {
-		return TaxRate;
+		return taxRate;
 	}
 	public void setTaxRate(BigDecimal taxRate) {
-		TaxRate = taxRate;
+		this.taxRate = taxRate;
 	}
 	public Timestamp getCreatedAt() {
 		return createdAt;

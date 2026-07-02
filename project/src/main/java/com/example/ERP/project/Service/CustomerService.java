@@ -18,6 +18,9 @@ public class CustomerService {
 	public Customer getCustomerById(long id) {
 		return customerRepository.findById(id).orElse(null);
 	}
+	public Customer getCustomerByLedgerId(Long ledgerId) {
+	    return customerRepository.findByLedgerId(ledgerId).orElse(null);
+	}
 	public Customer createCustomer(Customer customer) {
 		return customerRepository.save(customer);
 	}

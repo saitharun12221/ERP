@@ -17,9 +17,9 @@ import jakarta.persistence.Table;
 public class Customer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "ledgers_id")
+	@JoinColumn(name = "ledgers_id", columnDefinition = "BIGINT")
 	private Ledger ledger;
 	private String customer_code;
 	private String customer_name;
@@ -37,7 +37,7 @@ public class Customer {
 	public Customer() {
 		super();
 	}
-	public Customer(long id, Ledger ledger, String customer_code, String customer_name, String email,
+	public Customer(Long id, Ledger ledger, String customer_code, String customer_name, String email,
 			String gstNumber, String phone, String address, BigDecimal credit_limit, int payment_terms,
 			BigDecimal discount_percentage, BigDecimal opening_balance, BigDecimal closing_balance,
 			Timestamp createdAt, Timestamp updatedAt) {
@@ -58,10 +58,10 @@ public class Customer {
 		this.createdAt = createdAt;
 		this.updatedAt = updatedAt;
 	}
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public Ledger getLedger() {

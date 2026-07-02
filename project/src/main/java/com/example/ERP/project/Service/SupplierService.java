@@ -18,6 +18,9 @@ public class SupplierService {
 	public Supplier getSupplierById(Long id) {
 		return supplierRepository.findById(id).orElse(null);
 	}
+	public Supplier getSupplierByLedgerId(Long ledgerId) {
+	    return supplierRepository.findByLedgerId(ledgerId).orElse(null);
+	}
 	public Supplier createSupplier(Supplier supplier) {
 		return supplierRepository.save(supplier);
 	}
